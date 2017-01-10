@@ -57,12 +57,7 @@ class testApk_idDownload(unittest.TestCase):
             i=i+1
             self.get_app_info(category_id)  
         
-        
-#        print 'app_id的file测试。。。。。。。' 
-#        for  app_id in self.list_app_id:                               
-#            print app_id
-#            print '\t' 
-            #????????????????????????????/
+
             
         print 'apk_id的file测试。。。。。。。'    
         for apk_id in self.list_apk_id:
@@ -71,19 +66,6 @@ class testApk_idDownload(unittest.TestCase):
             print '\t' 
             self.get_file_info(apk_id, 1)
            
-#        print 'icon_id的file测试。。。。。。。'     
-#        for icon_id in self.list_icon_id:
-#            
-#            print icon_id
-#            print '\t' 
-#            self.get_file_info(icon_id, 2)
-           
-#        print 'screen_id的file测试。。。。。。。'    
-#        for screen_id in self.list_screen_id:            
-#            print screen_id
-#            print '\t' 
-#            for screen_id1 in screen_id:
-#                self.get_file_info(screen_id1, 3)
                     
 #主要作用是将去除parentid的id放在数组中供后期的调用
              
@@ -92,7 +74,7 @@ class testApk_idDownload(unittest.TestCase):
     def get_app_info(self, category_id):
         
         url = self.base_url + self.cat_app_uri+category_id
-#        print url       
+     
         response = requests.get(url)
         jResp = response.json()
         jData = jResp["data"]
@@ -103,7 +85,6 @@ class testApk_idDownload(unittest.TestCase):
                 self.list_icon_id.append(appData['icon_id'])
                 self.list_screen_id.append(appData['screen_id'])
 
-############################################################
               
 
     def get_file_info(self, file_id, file_type):

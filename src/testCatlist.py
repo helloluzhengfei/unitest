@@ -24,6 +24,8 @@ class testCatlist(unittest.TestCase):
         self.cat_listParent_id=[]    #parent_id
         self.cat_listMime_type=[]   
         self.app_Id=[]
+        self.cat_list_create_date=[]
+        self.cat_list_mod_date=[]
     #第一次测试   10.110.1.55:8081/1.0/cat/list/cat/list
     def test1_cat_list_api(self):
         url = self.base_url + self.cat_list_uri
@@ -48,8 +50,8 @@ class testCatlist(unittest.TestCase):
 #把data中的id部分依次遍历，放入到self.cat_list中
         for jCat in jData:
 
-            self.cat_listId.append(jCat['id'])                                 
-            self.cat_listName.append(jCat['name']) 
+            self.cat_listId.append(jCat['id'])   #0000-3b85e060-14ab-4f2a-a5f3-16cec8ebf9a9                              
+            self.cat_listName.append(jCat['name']) #中文名字
                       
             self.cat_listSeq_num.append(jCat['seq_num'])   
             b=type(jCat['seq_num'])            
@@ -62,7 +64,15 @@ class testCatlist(unittest.TestCase):
             self.cat_listMime_type.append(jCat['mime_type'])
                                     
             self.cat_listParent_id.append(jCat['parent_id'])            
-            self.cat_listMime_type.append(jCat['mime_type'])        
+            self.cat_listMime_type.append(jCat['mime_type']) 
+            
+            self.cat_list_create_date.append(jCat['create_date'])
+            d=type(jCat['file_size'])            
+            self.assertEqual(d, int)
+            
+            self.cat_list_mod_date.append(jCat['mod_date'])       
+            e=type(jCat['file_size'])            
+            self.assertEqual(e, int)
                    
 #此处放在data中的内容  
         self.cat_listId.append(u'0') 
@@ -78,6 +88,11 @@ class testCatlist(unittest.TestCase):
         print self.cat_listMime_type    
         print 'Parent_id是。。。。。。'  
         print self.cat_listParent_id
+        print 'create_date是。。'
+        print self.cat_list_create_date
+        print 'mod_date是。。。'
+        print self.cat_list_mod_date
+
 
 #判断        Parent_id是否包含在listId中
         self.cat_listParent_idRemSm=list(set(self.cat_listParent_id))
@@ -99,7 +114,7 @@ class testCatlist(unittest.TestCase):
 
         print u'第一次检查完美结束'
         print '\t'
-
+'''
 #删除在id中的parent_id        
         for parent_Id in self.cat_listParent_idRemSm:
             self.cat_listId.remove(parent_Id)
@@ -116,3 +131,4 @@ class testCatlist(unittest.TestCase):
             i=i+1
 #            self.get_app_info(category_id)
  
+'''
