@@ -4,6 +4,9 @@ import unittest
 import json
 import os
 import numbers
+from ctypes.test.test_numbers import bool_types
+import string
+import re
 class testApp(unittest.TestCase):
     def setUp(self):
         self.base_url = 'http://10.110.1.55:8081/1.0/'
@@ -36,19 +39,8 @@ class testApp(unittest.TestCase):
         jData = jResp["data"]
 
         for jCat in jData:
-
-            self.cat_listId.append(jCat['id'])                                
-            self.cat_listName.append(jCat['name'])                       
-            self.cat_listSeq_num.append(jCat['seq_num'])   
-                             
-            self.cat_listFile_size.append(jCat['file_size']) 
-                            
-            self.cat_listMime_type.append(jCat['mime_type'])                        
+            self.cat_listId.append(jCat['id'])                                                      
             self.cat_listParent_id.append(jCat['parent_id'])            
-            self.cat_listMime_type.append(jCat['mime_type'])        
-                   
-
-
 
         self.cat_listParent_idRemSm=list(set(self.cat_listParent_id))
         self.cat_listId.append(u'0')
@@ -104,16 +96,38 @@ class testApp(unittest.TestCase):
                 
                 print 'app_name'
                 print appData['app_name']
+                p = re.compile('^[\u4E00-\u9FFF]+$')
+                c= p.match(appData['app_name'])
+                print c 
+  #              b=type(appData['app_name'])            
+  #              self.assertEqual(b, str)
+                
                 print 'package_name'
                 print appData['package_name']
+                b=type(appData['package_name'])            
+ #               self.assertEqual(b, string)
+                
                 print 'version_name'
                 print appData['version_name']
+                b=type(appData['version_name'])            
+  #              self.assertEqual(b, str)
+                
                 print 'version_code'
                 print appData['version_code']
+                b=type(appData['version_code'])            
+                self.assertEqual(b, int)
+                
                 print 'cat'
                 print appData['cat']
+                b=type(appData['cat'])            
+#                self.assertIsInstance(b, str)
+                
                 print 'price'
                 print appData['price']
+                b=type(appData['price'])            
+ #               self.assertIsInstance(b, float)
+                
+                
                 print 'app_permit'
                 print appData['app_permit']
                 
@@ -127,16 +141,37 @@ class testApp(unittest.TestCase):
             
                 print 'signature'
                 print appData['signature']
-            
-
-            
+#                self.assertIsInstance(appData['signature'],str) 
+                        
                 print 'screen_id'
                 print appData['screen_id']
                 self.list_screen_id.append(appData['screen_id'])
                 
-               
-
-
+                print 'file_size'
+                print appData['file_size']
+                b=type(appData['file_size'])            
+                self.assertEqual(b, int)
+                
+                print 'download_count'
+                print appData['download_count']
+                b=type(appData['download_count'])            
+                self.assertEqual(b, int)
+                
+                print 'create_date'
+                print appData['create_date']
+                b=type(appData['create_date'])            
+                self.assertEqual(b, long)
+                
+                print 'mod_date'
+                print appData['mod_date']
+                b=type(appData['mod_date'])            
+                self.assertEqual(b, long)
+                
+                print 'purchase'
+                print appData['purchase']
+                b=type(appData['purchase'])            
+                self.assertEqual(b, bool)
+                
 
         print 'app_id¼ì²é' 
         for   app_id in self.list_app_id:

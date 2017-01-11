@@ -1,9 +1,0 @@
-python testCatlistAPI.py
-python testAppAPI.py
-python testFileInfoAPI.py
-python testApk_idDownloadAPI.py
-python testIcon_idDownloadAPI.py
-python testScreen_idDownloadAPI.py
-python testDiscussCommentAPI.py
-python testAppCommentsListAPI.py
-python testShowAppAPI.py

@@ -4,6 +4,7 @@ import unittest
 import json
 import os
 import numbers
+import re
 class testCatlist(unittest.TestCase):
     def setUp(self):
         self.base_url = 'http://10.110.1.55:8081/1.0/'
@@ -51,7 +52,10 @@ class testCatlist(unittest.TestCase):
         for jCat in jData:
 
             self.cat_listId.append(jCat['id'])   #0000-3b85e060-14ab-4f2a-a5f3-16cec8ebf9a9                              
-            self.cat_listName.append(jCat['name']) #中文名字
+            self.cat_listName.append(jCat["name"]) #中文名字
+            
+            
+            
                       
             self.cat_listSeq_num.append(jCat['seq_num'])   
             b=type(jCat['seq_num'])            
@@ -63,8 +67,10 @@ class testCatlist(unittest.TestCase):
                        
             self.cat_listMime_type.append(jCat['mime_type'])
                                     
-            self.cat_listParent_id.append(jCat['parent_id'])            
+            self.cat_listParent_id.append(jCat['parent_id'])  
+                    
             self.cat_listMime_type.append(jCat['mime_type']) 
+           
             
             self.cat_list_create_date.append(jCat['create_date'])
             d=type(jCat['file_size'])            

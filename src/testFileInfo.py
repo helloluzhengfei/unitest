@@ -4,6 +4,7 @@ import unittest
 import json
 import os
 import numbers
+import re
 class testFileInfo(unittest.TestCase):
     def setUp(self):
         self.base_url = 'http://10.110.1.55:8081/1.0/'
