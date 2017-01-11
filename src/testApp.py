@@ -57,7 +57,7 @@ class testApp(unittest.TestCase):
         for category_id in self.cat_listId: 
             print '\t'           
             print '第%d个应用' %i
-            print '该医用的id是%r '  %category_id 
+            print '该应用的id是%r '  %category_id 
            
             i=i+1
             self.get_app_info(category_id)  
@@ -95,7 +95,7 @@ class testApp(unittest.TestCase):
                 
                 
                 print 'app_name'
-                print appData['app_name']
+                print appData[u'app_name']
                 p = re.compile('^[\u4E00-\u9FFF]+$')
                 c= p.match(appData['app_name'])
                 print c 
