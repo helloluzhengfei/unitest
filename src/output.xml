@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20161231 22:10:03.789" generator="Robot 2.8.5 (Python 2.7.12 on win32)">
+<suite source="d:\jenkins_workspace\databaseTest\pro1\connection.txt" id="s1" name="Connection">
+<test id="s1-t1" name="connectToAwsTest">
+<kw type="kw" name="DatabaseLibrary.Connect To Database Using Custom Params">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to</doc>
+<arguments>
+<arg>pymysql</arg>
+<arg>host='swc-test1.clap5vvkrarj.rds.cn-north-1.amazonaws.com.cn', port=3306, user='sqe', passwd='sqe#1234', db='account_test'</arg>
+</arguments>
+<status status="PASS" endtime="20161231 22:10:04.887" starttime="20161231 22:10:03.935"></status>
+</kw>
+<kw type="kw" name="${result} = DatabaseLibrary.Query">
+<doc>Uses the input `selectStatement` to query for the values that</doc>
+<arguments>
+<arg>select * from user_account</arg>
+</arguments>
+<msg timestamp="20161231 22:10:05.006" level="INFO">${result} = ((100000, '86', '18501191196', '2iqs5fcr8n', 'd2944756c4fdd28e5d1e2a36049fcc939592417550c8d9673cb42700b2f543e1', datetime.datetime(2016, 9, 28, 10, 2, 32), 10001), (100001, '86', '13916425837', 'xx6p4...</msg>
+<status status="PASS" endtime="20161231 22:10:05.003" starttime="20161231 22:10:04.887"></status>
+</kw>
+<kw type="kw" name="DatabaseLibrary.Disconnect From Database">
+<doc>Disconnects from the database.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20161231 22:10:05.007" starttime="20161231 22:10:05.007"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20161231 22:10:05.008" critical="yes" starttime="20161231 22:10:03.935"></status>
+</test>
+<test id="s1-t2" name="connectToAwsDev">
+<kw type="kw" name="DatabaseLibrary.Connect To Database Using Custom Params">
+<doc>Loads the DB API 2.0 module given `dbapiModuleName` then uses it to</doc>
+<arguments>
+<arg>pymysql</arg>
+<arg>host='mobile-beijing.clap5vvkrarj.rds.cn-north-1.amazonaws.com.cn', port=3306, user='sqe', passwd='sqe#1234', db='account_dev'</arg>
+</arguments>
+<status status="PASS" endtime="20161231 22:10:05.634" starttime="20161231 22:10:05.009"></status>
+</kw>
+<kw type="kw" name="${result} = DatabaseLibrary.Query">
+<doc>Uses the input `selectStatement` to query for the values that</doc>
+<arguments>
+<arg>select * from user_account</arg>
+</arguments>
+<msg timestamp="20161231 22:10:05.752" level="INFO">${result} = ((100000, '86', '18618417081', 'c7oa016fy', 'd2944756c4fdd28e5d1e2a36049fcc939592417550c8d9673cb42700b2f543e1', datetime.datetime(2016, 8, 9, 15, 36, 56), 10000), (100001, '86', '18501191196', None, '...</msg>
+<status status="PASS" endtime="20161231 22:10:05.750" starttime="20161231 22:10:05.634"></status>
+</kw>
+<doc></doc>
+<tags>
+</tags>
+<status status="PASS" endtime="20161231 22:10:05.753" critical="yes" starttime="20161231 22:10:05.008"></status>
+</test>
+<doc></doc>
+<metadata>
+</metadata>
+<status status="PASS" endtime="20161231 22:10:05.754" starttime="20161231 22:10:03.789"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" pass="2" id="s1" name="Connection">Connection</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
