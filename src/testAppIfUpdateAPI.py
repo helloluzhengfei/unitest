@@ -1,4 +1,4 @@
-#coding=GBK 
+#coding=utf-8
 
 import unittest
 from testAppIfUpdate import testAppIfUpdate

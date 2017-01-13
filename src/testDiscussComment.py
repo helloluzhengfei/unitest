@@ -2,8 +2,7 @@
 import requests
 import unittest
 import json
-import os
-import numbers
+
 class testDiscussComment(unittest.TestCase):
     def setUp(self):
         self.base_url = 'http://10.110.1.55:8081/1.0/'
@@ -68,32 +67,7 @@ class testDiscussComment(unittest.TestCase):
             print app_id
             self.discuss_comment_list(app_id)
             print '\t' 
-            
-#        print 'apk_id的file测试。。。。。。。'    
-#       for apk_id in self.list_apk_id:
-             
-#            print apk_id
-#            print '\t' 
-#            self.get_file_info(apk_id, 1)
-           
-#        print 'icon_id的file测试。。。。。。。'     
-#        for icon_id in self.list_icon_id:
-            
-#            print icon_id
-#            print '\t' 
-#            self.get_file_info(icon_id, 2)
-           
- #       print 'screen_id的file测试。。。。。。。'    
- #       for screen_id in self.list_screen_id:            
- #           print screen_id
- #           print '\t' 
- #           for screen_id1 in screen_id:
- #               self.get_file_info(screen_id1, 3)
-                    
-#主要作用是将去除parentid的id放在数组中供后期的调用
-             
-#第二次测试        10.110.1.55:8081/1.0/cat/app/app_id
-#循环遍历，将app_id,apk_id,icon_id,scree——id全部放入数组
+
     def get_app_info(self, category_id):
         
         url = self.base_url + self.cat_app_uri+category_id
@@ -104,18 +78,11 @@ class testDiscussComment(unittest.TestCase):
         for appData in jData:            
                 
                 self.list_app_id.append(appData['id'])               
-#                self.list_apk_id.append(appData['apk_id'])
-#                self.list_icon_id.append(appData['icon_id'])
-#                self.list_screen_id.append(appData['screen_id'])
 
-############################################################
               
 
     def discuss_comment_list(self, app_id):
-        
-        
-        
-        
+                
         url = self.base_url + self.comment_add_uri + app_id #http://10.110.1.55:8081/1.0/file/
         print '陆正飞  本次测试的URL是'
         print url
@@ -128,16 +95,11 @@ class testDiscussComment(unittest.TestCase):
         #print self.cat_list
         jResp = response.json()  
         result_code = jResp["result_code"]        
-#        self.assertEqual(result_code, 200) #判断result_code是否等于200
-        print 'result_code的结果是200' 
-        print result_code       
-        
-                   
-        jData = jResp["data"]
-        
+        self.assertEqual(result_code, 200) #判断result_code是否等于200
+                           
+        jData = jResp["data"]       
         comment_id=jData['id']
-        print comment_id
-                
+        print comment_id                
         app_id=jData['app_id']
         print app_id
         

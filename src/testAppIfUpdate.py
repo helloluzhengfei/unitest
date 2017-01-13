@@ -1,4 +1,4 @@
-#coding=GBK  
+#coding=utf-8 
 import requests
 import unittest
 import json
@@ -32,13 +32,13 @@ class testAppIfUpdate(unittest.TestCase):
         self.cat_listId.append(u'0')       
         for parent_Id in self.cat_listParent_idRemSm:
             self.cat_listId.remove(parent_Id)       
-        print 'È¥³ýparent_idµÄidÁÐ±í'
+        
         print self.cat_listId  
         i=1    
         for category_id in self.cat_listId: 
             print '\t'           
-            print 'µÚ%d¸öÓ¦ÓÃ' %i
-            print '¸ÃÓ¦ÓÃµÄidÊÇ%r '  %category_id         
+            print 'ç¬¬%dä¸ªåº”ç”¨' %i
+            print 'idæ˜¯%r '  %category_id         
             i=i+1
             self.get_app_info(category_id)  
               
@@ -65,18 +65,18 @@ class testAppIfUpdate(unittest.TestCase):
         pqyload = {"query_param":[{"package_name":package_name,"version_code":version_code}]}
         print pqyload
         url = self.base_url + self.update_url           
-        print '±¾´Î²âÊÔµÄURLÊÇ'
+        
         print url      
         response = requests.post(url,data = json.dumps(pqyload)) 
         jResp = response.json() 
-        self.assertEqual(response.status_code, 200) #ÅÐ¶Ï·µ»ØÂëÊÇ·ñµÈÓÚ200
+        self.assertEqual(response.status_code, 200) #ï¿½Ð¶Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½200
         
         result_code = jResp["result_code"]        
-        self.assertEqual(result_code, 200) #ÅÐ¶Ïresult_codeÊÇ·ñµÈÓÚ200
+        self.assertEqual(result_code, 200) #ï¿½Ð¶ï¿½result_codeï¿½Ç·ï¿½ï¿½ï¿½ï¿½200
     
         list_limit = jResp['limit']
         self.cat_total=jResp["total"]
-        self.assertLessEqual(list_limit, self.cat_total)#ÅÐ¶ÏlimitÊýÁ¿ÊÇ·ñ²»´óÓÚtotal
+        self.assertLessEqual(list_limit, self.cat_total)#ï¿½Ð¶ï¿½limitï¿½ï¿½ï¿½ï¿½ï¿½Ç·ñ²»´ï¿½ï¿½ï¿½total
     
         jData = jResp["data"] 
           
@@ -87,7 +87,10 @@ class testAppIfUpdate(unittest.TestCase):
             print  jCat['id']                                                 
             
             print 'app_name'
-            print  jCat['app_name']          
+            print  jCat['app_name']  
+            
+            print 'package_name'        
+            print  jCat['package_name']  
             
             print 'version_name'
             print  jCat['version_name']
@@ -99,8 +102,8 @@ class testAppIfUpdate(unittest.TestCase):
             print 'app_desc'
             print  jCat['app_desc']
             
- #           print 'version_desc'
- #           print  jCat['version_desc']
+            print 'version_desc'
+            print  jCat['version_desc']
            
             print 'app_permit'
             print  jCat['app_permit']
@@ -116,6 +119,9 @@ class testAppIfUpdate(unittest.TestCase):
             
             print 'signature'
             print  jCat['signature']
+            
+            print 'updateable'
+            print  jCat['updateable']
             
             print 'file_size'
             print  jCat['file_size']

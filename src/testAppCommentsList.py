@@ -68,37 +68,13 @@ class testAppCommentsList(unittest.TestCase):
             self.get_app_info(category_id)  
         
         
-        print 'app_id的file测试。。。。。。。' 
+        
         for  app_id in self.list_app_id:                               
             print app_id
             self.get_comment_list(app_id)
             print '\t' 
             
-#        print 'apk_id的file测试。。。。。。。'    
-#       for apk_id in self.list_apk_id:
-             
-#            print apk_id
-#            print '\t' 
-#            self.get_file_info(apk_id, 1)
-           
-#        print 'icon_id的file测试。。。。。。。'     
-#        for icon_id in self.list_icon_id:
-            
-#            print icon_id
-#            print '\t' 
-#            self.get_file_info(icon_id, 2)
-           
- #       print 'screen_id的file测试。。。。。。。'    
- #       for screen_id in self.list_screen_id:            
- #           print screen_id
- #           print '\t' 
-  #          for screen_id1 in screen_id:
- #               self.get_file_info(screen_id1, 3)
-                    
-#主要作用是将去除parentid的id放在数组中供后期的调用
-             
-#第二次测试        10.110.1.55:8081/1.0/cat/app/app_id
-#循环遍历，将app_id,apk_id,icon_id,scree——id全部放入数组
+
     def get_app_info(self, category_id):
         
         url = self.base_url + self.cat_app_uri+category_id
@@ -109,11 +85,7 @@ class testAppCommentsList(unittest.TestCase):
         for appData in jData:            
                 
                 self.list_app_id.append(appData['id'])               
-#                self.list_apk_id.append(appData['apk_id'])
-#                self.list_icon_id.append(appData['icon_id'])
-#                self.list_screen_id.append(appData['screen_id'])
 
-############################################################
               
 
     def get_comment_list(self, app_id):
@@ -123,9 +95,9 @@ class testAppCommentsList(unittest.TestCase):
 #        self.commentcontent='?pos=%d&limit=%d' %(a,b)
         
         ###########此处需要修改
-        pqyload = {'pos':'1','limit':'1'}
+        pqyload = {'pos':'0','limit':'100'}
         url = self.base_url + self.get_commentlist_uri + app_id#+self.commentcontent #http://10.110.1.55:8081/1.0/file/
-        print '陆正飞  本次测试的URL是'
+        print '本次测试的URL是'
         print url
         
         response = requests.get(url,params = pqyload) 
@@ -151,7 +123,7 @@ class testAppCommentsList(unittest.TestCase):
             i=i+1  
             
             print "评论的id是。。。"        
-            i=i+1   
+               
             print jCat['id']
             
             print "评论的app_id。。。"            
@@ -168,7 +140,8 @@ class testAppCommentsList(unittest.TestCase):
             
             print "评论的create_date是。。。"
             print jCat['create_date']
-            
+
+'''            
             self.comment_id.append(jCat['id'])  
             self.comment_app_id.append(jCat['app_id'])   
             self.comment_msg.append(jCat['msg'])  
@@ -181,7 +154,7 @@ class testAppCommentsList(unittest.TestCase):
         
         for comid in self.comment_id:
             print comid
-  
+''' 
 
         
                 

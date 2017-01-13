@@ -27,7 +27,8 @@ class testRecommend(unittest.TestCase):
         self.recommend_create_date=[]
         self.recommend_mod_date=[]
         self.recommend_purchase=[]
-
+        self.recommend_package_name=[]
+        
     def test1_cat_list_api(self):
         pqyload = {'pos':'1','limit':'1','orderByColumn':'1'}
         url = self.base_url + self.comment_url           
@@ -52,7 +53,12 @@ class testRecommend(unittest.TestCase):
             print  jCat['id']                                                 
             self.recommend_app_name.append(jCat['app_name']) 
             print 'app_name'
-            print  jCat['app_name']          
+            print  jCat['app_name']   
+            self.recommend_app_name.append(jCat['package_name'])
+            print 'package_name'
+            print  jCat['package_name'] 
+             
+                    
             self.recommend_package_name.append(jCat['version_name'])
             print 'version_name'
             print  jCat['version_name']
